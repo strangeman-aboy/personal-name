@@ -233,7 +233,7 @@
       setAnchor(anchor, github, "↗ GitHub");
     });
     document.querySelectorAll('a[href^="mailto:"]').forEach((anchor) => {
-      setAnchor(anchor, `mailto:${email}`, "↗ Email");
+      setAnchor(anchor, `mailto:${email}`, `↗ ${email}`);
     });
   }
 
@@ -559,7 +559,7 @@
     document.querySelectorAll(".contact a").forEach((anchor) => {
       const text = anchor.textContent.toLowerCase();
       if (text.includes("mail") || text.includes("email") || anchor.href.startsWith("mailto:")) {
-        setAnchor(anchor, `mailto:${email}`, "↗ Email");
+        setAnchor(anchor, `mailto:${email}`, `↗ ${email}`);
       } else {
         setAnchor(anchor, github, "↗ GitHub");
       }

@@ -1050,6 +1050,7 @@ img {
   width: 100%;
   margin: 0;
   aspect-ratio: auto;
+  height: clamp(38rem, 42vw, 47rem);
   border-color: var(--hairline);
   border-radius: 1.2rem;
   background:
@@ -1173,11 +1174,13 @@ img {
 }
 
 .preview-brief {
-  min-height: auto;
+  height: 100%;
+  min-height: 0;
   padding: clamp(2.2rem, 3vw, 3.4rem);
   display: grid;
-  grid-template-rows: auto auto auto;
+  grid-template-rows: auto minmax(0, 1fr) auto;
   gap: clamp(2.2rem, 3vw, 3.8rem);
+  overflow: hidden;
 }
 
 .preview-brief-top,
@@ -1206,7 +1209,7 @@ img {
 }
 
 .preview-brief-body {
-  align-self: start;
+  align-self: center;
   display: grid;
   gap: 1.3rem;
   margin: clamp(2.4rem, 5vw, 5.4rem) 0 clamp(1.8rem, 3.5vw, 3.8rem);
@@ -1648,10 +1651,12 @@ img {
 
   .preview-card {
     aspect-ratio: auto;
+    height: auto;
     min-height: auto;
   }
 
   .preview-brief {
+    height: auto;
     min-height: auto;
   }
 

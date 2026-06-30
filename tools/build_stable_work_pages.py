@@ -1365,6 +1365,7 @@ img {
   width: 100%;
   margin: 0;
   aspect-ratio: auto;
+  height: clamp(38rem, 42vw, 47rem);
   border-color: var(--hairline);
   border-radius: 1.2rem;
   background:
@@ -1488,11 +1489,13 @@ img {
 }
 
 .preview-brief {
-  min-height: auto;
+  height: 100%;
+  min-height: 0;
   padding: clamp(2.2rem, 3vw, 3.4rem);
   display: grid;
-  grid-template-rows: auto auto auto;
+  grid-template-rows: auto minmax(0, 1fr) auto;
   gap: clamp(2.2rem, 3vw, 3.8rem);
+  overflow: hidden;
 }
 
 .preview-brief-top,
@@ -1521,7 +1524,7 @@ img {
 }
 
 .preview-brief-body {
-  align-self: start;
+  align-self: center;
   display: grid;
   gap: 1.3rem;
   margin: clamp(2.4rem, 5vw, 5.4rem) 0 clamp(1.8rem, 3.5vw, 3.8rem);
@@ -1963,10 +1966,12 @@ img {
 
   .preview-card {
     aspect-ratio: auto;
+    height: auto;
     min-height: auto;
   }
 
   .preview-brief {
+    height: auto;
     min-height: auto;
   }
 
@@ -2159,8 +2164,11 @@ def header(current: str) -> str:
     """
 
 
+ASSET_VERSION = "20260630-stability-1"
+
+
 def html_page(title: str, description: str, body: str, script: bool = False, body_class: str = "") -> str:
-    script_tag = '<script src="/work/work-stable.js" defer></script>' if script else ""
+    script_tag = f'<script src="/work/work-stable.js?v={ASSET_VERSION}" defer></script>' if script else ""
     body_class_attr = f' class="{esc(body_class)}"' if body_class else ""
     return f"""<!doctype html>
 <html lang="zh-CN">
@@ -2172,7 +2180,7 @@ def html_page(title: str, description: str, body: str, script: bool = False, bod
     <meta name="theme-color" content="#f4f5f6" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="preload" href="/fonts/studio-feixen-sans-variable.woff2" as="font" crossorigin type="font/woff2" />
-    <link rel="stylesheet" href="/work/work-stable.css" />
+    <link rel="stylesheet" href="/work/work-stable.css?v={ASSET_VERSION}" />
   </head>
   <body{body_class_attr}>
 {body}
