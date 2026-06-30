@@ -1491,17 +1491,22 @@ img {
 .preview-brief {
   height: 100%;
   min-height: 0;
-  padding: clamp(2.2rem, 3vw, 3.4rem);
+  padding: clamp(1.9rem, 2.5vw, 2.9rem);
   display: grid;
   grid-template-rows: auto minmax(0, 1fr) auto;
-  gap: clamp(2.2rem, 3vw, 3.8rem);
+  gap: clamp(1.5rem, 2.2vw, 2.5rem);
   overflow: hidden;
 }
 
 .preview-brief-top,
 .preview-brief-bottom {
   display: grid;
-  gap: 1.4rem;
+  gap: 1rem;
+}
+
+.preview-brief-bottom {
+  align-self: end;
+  min-height: 0;
 }
 
 .preview-brief-top {
@@ -1518,30 +1523,38 @@ img {
 
 .preview-brief-number {
   color: rgba(82, 96, 125, 0.22);
-  font-size: clamp(4.6rem, 6.3vw, 7.8rem);
+  font-size: clamp(3.8rem, 5.8vw, 6.8rem);
   font-weight: 860;
   line-height: 0.78;
 }
 
 .preview-brief-body {
-  align-self: center;
+  min-height: 0;
+  align-self: stretch;
+  align-content: center;
   display: grid;
-  gap: 1.3rem;
-  margin: clamp(2.4rem, 5vw, 5.4rem) 0 clamp(1.8rem, 3.5vw, 3.8rem);
+  gap: 1rem;
+  margin: 0;
+  overflow: hidden;
 }
 
 .preview-brief-body strong {
   color: #15213b;
-  font-size: clamp(3.4rem, 4vw, 5.6rem);
+  font-size: clamp(2.8rem, 3.35vw, 4.7rem);
   font-weight: 850;
-  line-height: 0.96;
+  line-height: 0.98;
+  text-wrap: balance;
 }
 
 .preview-brief-body p {
   margin: 0;
   color: #52617b;
-  font-size: clamp(1.18rem, 1vw, 1.36rem);
-  line-height: 1.66;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  font-size: clamp(1.08rem, 0.95vw, 1.25rem);
+  line-height: 1.55;
 }
 
 .preview-brief-tags {
@@ -1564,9 +1577,9 @@ img {
 .preview-brief-points {
   list-style: none;
   display: grid;
-  gap: 1rem;
+  gap: 0.72rem;
   margin: 0;
-  padding: 1.2rem 0 0;
+  padding: 1rem 0 0;
   border-top: 1px solid rgba(82, 96, 125, 0.16);
 }
 
@@ -1586,8 +1599,12 @@ img {
 .preview-brief-points p {
   margin: 0;
   color: #52617b;
-  font-size: 1.08rem;
-  line-height: 1.48;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-size: 1rem;
+  line-height: 1.42;
 }
 
 .preview-caption {
@@ -2164,7 +2181,7 @@ def header(current: str) -> str:
     """
 
 
-ASSET_VERSION = "20260630-stability-1"
+ASSET_VERSION = "20260630-overlap-1"
 
 
 def html_page(title: str, description: str, body: str, script: bool = False, body_class: str = "") -> str:
