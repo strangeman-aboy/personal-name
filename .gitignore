@@ -5,6 +5,7 @@ draft-before-sharlee-*/
 qa-screenshots/
 tmp-*.html
 *.log
+dist/
 .env
 .env.*
 .DS_Store
