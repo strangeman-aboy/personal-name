@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>灵质空间</title>
+    <meta
+      name="description"
+      content="郝东晨的个人生活宇宙入口。"
+    />
+    <link rel="stylesheet" href="./lingzhi-space.css" />
+  </head>
+  <body>
+    <main class="space-shell" data-state="asleep">
+      <img
+        class="space-bg"
+        src="./life-space-assets/forest-group-bg.jpg"
+        alt=""
+        aria-hidden="true"
+      />
+      <div class="shade" aria-hidden="true"></div>
+      <div class="bubble-film" aria-hidden="true"></div>
+
+      <section class="entry-copy" aria-label="灵质空间入口">
+        <p class="eyebrow">Dongchen's Life Map</p>
+        <h1>灵质空间</h1>
+        <p class="line">把生活、项目和那些没写完的想法，暂时收进一张地图。</p>
+      </section>
+
+      <div class="space-bubbles" aria-label="空间入口">
+        <button class="space-bubble project" type="button" data-space="项目空间">
+          <span>项目空间</span>
+        </button>
+        <button class="space-bubble life" type="button" data-space="生活空间">
+          <span>生活空间</span>
+        </button>
+        <button class="space-bubble idea" type="button" data-space="灵感碎片">
+          <span>灵感碎片</span>
+        </button>
+        <button class="space-bubble secret" type="button" data-space="秘密角落">
+          <span>秘密角落</span>
+        </button>
+      </div>
+
+      <aside class="guide-zone" aria-label="嘿咻向导">
+        <button class="heixiu-button" type="button" aria-label="唤醒嘿咻">
+          <span class="heixiu-ring" aria-hidden="true"></span>
+          <img
+            class="heixiu-sprite"
+            src="./life-space-assets/heixiu/heixiu-idle.png"
+            alt=""
+          />
+        </button>
+      </aside>
+
+      <div class="prompt" role="status" aria-live="polite">
+        <p class="prompt-kicker">已唤醒</p>
+        <p class="prompt-title">进入我的灵质空间</p>
+        <p class="prompt-note">再点一次入口</p>
+      </div>
+
+      <section class="inside-space" aria-label="已进入空间">
+        <button class="back-button" type="button">返回地图</button>
+        <p class="inside-label">Now entering</p>
+        <h2>项目空间</h2>
+        <p>这里会继续长出你的项目、生活、灵感和只给自己看的片段。</p>
+      </section>
+    </main>
+
+    <script src="./lingzhi-space.js" defer></script>
+  </body>
+</html>

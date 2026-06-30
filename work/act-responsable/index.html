@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dongchen Hao | Agent Memory Skill</title>
+    <meta name="description" content="一个为长任务 AI Agent 设计的本地记忆与交接工具。它关注上下文压缩、模型切换、任务中断后的恢复，以及多人协作时如何保留真正有用的状态。" />
+    <meta name="theme-color" content="#f4f5f6" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="preload" href="/fonts/studio-feixen-sans-variable.woff2" as="font" crossorigin type="font/woff2" />
+    <link rel="stylesheet" href="/work/work-stable.css" />
+  </head>
+  <body>
+
+
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Dongchen Hao home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Dongchen Hao</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="/">首页</a>
+        <a href="/work/" aria-current="page">作品</a>
+        <a href="/about/">关于我</a>
+        <a href="/contact/">联系</a>
+      </nav>
+    </header>
+    
+    <main class="project-shell">
+      <a class="back-link" href="/work/">← 返回作品列表</a>
+
+      <figure class="case-cover">
+
+        <div class="case-cover-frame">
+          <img src="/external-assets/project-screens/agent-memory-github.png" alt="Agent Memory Skill GitHub repository screenshot" />
+        </div>
+        
+        <figcaption>GitHub 仓库实拍截图</figcaption>
+      </figure>
+    
+      <section class="case-title">
+        <div class="project-kicker">项目 / Agent 工具</div>
+        <h1>Agent Memory Skill</h1>
+      </section>
+      <section class="case-intro">
+        <dl class="meta-list">
+          <div>
+            <dt>分类</dt>
+            <dd>Agent 工具</dd>
+          </div>
+          <div>
+            <dt>时间</dt>
+            <dd>2026</dd>
+          </div>
+          <div>
+            <dt>角色</dt>
+            <dd>Python CLI / Skill 设计</dd>
+          </div>
+          <div>
+            <dt>对象</dt>
+            <dd>个人开源工具</dd>
+          </div>
+        </dl>
+        <div class="case-description">
+          <p>一个为长任务 AI Agent 设计的本地记忆与交接工具。它关注上下文压缩、模型切换、任务中断后的恢复，以及多人协作时如何保留真正有用的状态。</p>
+          <div class="project-actions"><a class="pill-link" href="https://github.com/strangeman-aboy/agent-memory-skill" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+        </div>
+      </section>
+
+
+      <section class="case-story" aria-label="案例详情">
+
+          <article class="case-block">
+            <h2>背景</h2>
+            <div class="case-block-content">
+              <h3>AI Agent 越长时间工作，越需要可靠的记忆和交接方式。</h3>
+              <p>很多长任务不是输在模型能力，而是输在上下文丢失、任务恢复困难和交接信息过载。这个工具试图把“有用状态”变成结构化资产。</p>
+            </div>
+          </article>
+    
+          <article class="case-block">
+            <h2>我负责</h2>
+            <div class="case-block-content">
+              <h3>把记忆流程设计成可以被 CLI 和 Codex Skill 调用的工具链。</h3>
+              <ul><li>设计 candidate、promote、select、compact、redact、forget 等记忆流程。</li><li>用 Python CLI 和 JSON Schema 保持输入输出稳定。</li><li>围绕多代理协作、模型迁移和上下文压缩补行为级测试。</li></ul>
+            </div>
+          </article>
+    
+          <article class="case-block">
+            <h2>结果</h2>
+            <div class="case-block-content">
+              <h3>它更像一个工程化工具，而不是单次对话里的 prompt 技巧。</h3>
+              <p>项目保留了明确的命令边界、数据结构和测试入口，适合继续扩展成长期 AI 工作流中的基础能力。</p>
+            </div>
+          </article>
+    
+      </section>
+      <div class="chip-row"><span class="chip">Python</span><span class="chip">Codex Skill</span><span class="chip">CLI</span><span class="chip">JSON Schema</span><span class="chip">Agent Workflow</span></div>
+      <nav class="next-project" aria-label="下一个作品">
+        <a href="/work/les-indecis/">
+          <span>下一个</span>
+          <strong>Longmo Store Demo</strong>
+        </a>
+      </nav>
+    </main>
+    
+
+  </body>
+</html>

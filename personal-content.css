@@ -1,0 +1,594 @@
+body.personalized .language-switch {
+  display: none !important;
+}
+
+svg[data-name="deconstructedLogo"],
+header .logo svg[data-name="logoItem"] {
+  display: none !important;
+}
+
+.personal-logo-type {
+  align-items: center;
+  color: inherit;
+  display: inline-flex;
+  font-family: studiofeixen-variable, studiofeixen, Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  font-variation-settings: "wght" 850, "wdth" 125;
+  font-weight: 800;
+  justify-content: center;
+  letter-spacing: 0;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.personal-logo-header {
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  font-size: 0.86rem;
+  font-variation-settings: "wght" 850, "wdth" 100;
+  height: 48px;
+  width: 48px;
+}
+
+.personal-logo-splash {
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  font-size: 1.35rem;
+  height: 72px;
+  width: 72px;
+}
+
+body.personal-home .home {
+  isolation: isolate;
+  overflow: hidden;
+}
+
+body.personal-home .canvas {
+  opacity: 1;
+}
+
+body.personal-home .home .intro-wrapper {
+  position: relative;
+  z-index: 2;
+}
+
+body.personal-home .personal-home-shape-overlay {
+  --stage-scale: 1;
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+
+body.personal-home .personal-home-shape-defs {
+  height: 0;
+  position: absolute;
+  width: 0;
+}
+
+body.personal-home .personal-home-shape-layer {
+  height: 520px;
+  left: 50%;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(var(--stage-scale));
+  transform-origin: center;
+  transition: opacity 180ms ease, visibility 0s linear 180ms;
+  visibility: hidden;
+  width: 924px;
+}
+
+body.personal-home.personal-shapes-fullname .personal-home-shape-layer-fullname,
+body.personal-home.personal-shapes-nickname .personal-home-shape-layer-nickname {
+  opacity: 1;
+  transition-delay: 0s;
+  visibility: visible;
+}
+
+body.personal-home.personal-shapes-fullname .canvas,
+body.personal-home.personal-shapes-nickname .canvas {
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+body.personal-home .personal-home-shape {
+  display: block;
+  height: var(--shape-size);
+  left: 50%;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  transform:
+    translate(-50%, -50%)
+    translate(var(--shape-start-x), var(--shape-start-y))
+    rotate(var(--shape-start-rotate))
+    scale(0.72);
+  transform-origin: center;
+  transition:
+    transform 820ms cubic-bezier(0.17, 0.88, 0.28, 1),
+    opacity 220ms ease;
+  transition-delay: var(--shape-delay);
+  width: var(--shape-size);
+  will-change: transform, opacity;
+}
+
+body.personal-home.personal-shapes-fullname .personal-home-shape-layer-fullname .personal-home-shape,
+body.personal-home.personal-shapes-nickname .personal-home-shape-layer-nickname .personal-home-shape {
+  opacity: 1;
+  transform:
+    translate(-50%, -50%)
+    translate(var(--shape-x), var(--shape-y))
+    rotate(var(--shape-rotate))
+    scale(1);
+}
+
+body.personal-home .personal-home-shape svg {
+  display: block;
+  fill: url("#homeShapeGradient");
+  filter: url("#homeShapeGlow");
+  height: 100%;
+  overflow: visible;
+  stroke: #606887;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 4.5;
+  width: 100%;
+}
+
+@media (max-width: 1100px) {
+  body.personal-home .personal-home-shape-overlay {
+    --stage-scale: 0.82;
+  }
+}
+
+body.personalized .projects-right li.personal-hidden,
+body.personalized .projects-left .projects-image-wrapper.personal-hidden {
+  display: none !important;
+}
+
+body.personalized .projects-title,
+body.personalized .project-title,
+body.personalized .project-meta-value,
+body.personalized .presentation-text {
+  letter-spacing: 0;
+}
+
+body.personalized .about {
+  align-items: center;
+}
+
+body.personalized .about-right {
+  display: none !important;
+}
+
+body.personalized .about-left {
+  max-width: min(88rem, 90vw);
+}
+
+body.personalized .presentation-text {
+  max-width: 38em;
+  line-height: 1.42;
+}
+
+body.personalized .resume-link a::after {
+  content: "";
+}
+
+body.personalized .project-personal-summary {
+  margin-top: clamp(2.5rem, 5vw, 6rem);
+  max-width: 68rem;
+}
+
+body.personalized .project .hero-image-wrapper {
+  background: rgba(255, 255, 255, 0.72);
+}
+
+body.personalized .project .hero-image {
+  object-fit: contain !important;
+}
+
+body.personalized .project .project-content {
+  display: none !important;
+}
+
+body.personalized .project .project-description p {
+  line-height: 1.42;
+}
+
+body.personalized .project-personal-summary p,
+body.personalized .project-personal-summary li {
+  font-size: clamp(1.6rem, 1.5vw, 2.1rem);
+  line-height: 1.48;
+}
+
+body.personalized .project-personal-summary ul {
+  display: grid;
+  gap: 1rem;
+  margin: 2rem 0 0;
+  padding-left: 1.2em;
+}
+
+body.personalized .personal-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 2rem;
+}
+
+body.personalized .personal-chip {
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: clamp(1.1rem, 1vw, 1.4rem);
+  line-height: 1;
+  padding: 0.65em 0.9em;
+  white-space: nowrap;
+}
+
+body.personalized .project-case-intro {
+  max-width: 48rem;
+}
+
+body.personalized .project-case-kicker {
+  margin: 0 0 0.65rem;
+  font-size: clamp(1.1rem, 1vw, 1.35rem) !important;
+  line-height: 1.2 !important;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  opacity: 0.66;
+}
+
+body.personalized .project-case-intro h2 {
+  margin: 0 0 1rem;
+  font-size: clamp(2.4rem, 4.2vw, 5.4rem);
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+body.personalized .project-case-intro p {
+  max-width: 42rem;
+  margin: 0;
+  opacity: 0.82;
+}
+
+body.personalized .project-case-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: clamp(2rem, 4vw, 4rem);
+  border-top: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+}
+
+body.personalized .project-case-metrics div {
+  min-height: 8rem;
+  padding: 1.5rem 1.25rem;
+  border-right: 1px solid currentColor;
+}
+
+body.personalized .project-case-metrics div:last-child {
+  border-right: 0;
+}
+
+body.personalized .project-case-metrics strong {
+  display: block;
+  font-size: clamp(2.6rem, 4vw, 5.2rem);
+  line-height: 0.9;
+}
+
+body.personalized .project-case-metrics span {
+  display: block;
+  margin-top: 0.85rem;
+  font-size: clamp(1.15rem, 1vw, 1.4rem);
+  line-height: 1.25;
+  opacity: 0.72;
+}
+
+body.personalized .project-case-visuals {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(1rem, 2vw, 2rem);
+  margin-top: clamp(2rem, 4vw, 4rem);
+}
+
+body.personalized .project-case-visuals figure {
+  margin: 0;
+}
+
+body.personalized .project-case-visuals figure:first-child {
+  grid-row: span 2;
+}
+
+body.personalized .project-case-visuals img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top center;
+  border: 1px solid rgba(91, 98, 128, 0.24);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.64);
+}
+
+body.personalized .project-case-visuals figcaption {
+  margin-top: 0.7rem;
+  font-size: clamp(1rem, 0.9vw, 1.25rem);
+  line-height: 1.25;
+  opacity: 0.7;
+}
+
+body.personalized .project-case-blocks {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: clamp(2.5rem, 5vw, 5rem);
+}
+
+body.personalized .project-case-blocks article {
+  min-height: 16rem;
+  padding: 1.6rem;
+  border: 1px solid rgba(91, 98, 128, 0.28);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.38);
+}
+
+body.personalized .project-case-blocks span {
+  display: block;
+  margin-bottom: 1.4rem;
+  font-size: 1.05rem;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  opacity: 0.58;
+}
+
+body.personalized .project-case-blocks h3 {
+  margin: 0 0 0.8rem;
+  font-size: clamp(1.6rem, 1.8vw, 2.4rem);
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+body.personalized .project-case-blocks p {
+  margin: 0;
+  font-size: clamp(1.25rem, 1.15vw, 1.6rem) !important;
+  line-height: 1.48 !important;
+  opacity: 0.78;
+}
+
+body.personalized .project-case-highlights {
+  margin-top: clamp(2.5rem, 4vw, 4.5rem) !important;
+}
+
+body.personalized .project-case-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 2rem;
+}
+
+body.personalized .project-case-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 3rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: clamp(1.1rem, 1vw, 1.35rem);
+  line-height: 1;
+  text-decoration: none;
+}
+
+body.personalized .personal-life-note {
+  margin-top: clamp(3rem, 5vw, 6rem);
+  max-width: 56rem;
+  opacity: 0.82;
+}
+
+body.personalized .personal-life-note p {
+  font-size: clamp(1.4rem, 1.3vw, 1.8rem);
+  line-height: 1.55;
+}
+
+body.personalized .personal-experience {
+  margin-top: clamp(5rem, 8vw, 9rem);
+}
+
+body.personalized .personal-section-head {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.2rem, 2vw, 2rem);
+  border-top: 1px solid currentColor;
+  padding-top: clamp(1.8rem, 3vw, 3rem);
+}
+
+body.personalized .personal-section-head h3 {
+  font-size: clamp(3.4rem, 4vw, 5.8rem);
+  line-height: 0.95;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+body.personalized .personal-section-head p {
+  font-size: clamp(1.45rem, 1.5vw, 2rem);
+  line-height: 1.5;
+  margin: 0;
+  max-width: 42em;
+}
+
+body.personalized .personal-experience-list {
+  border-top: 1px solid currentColor;
+}
+
+body.personalized .personal-source-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.2rem, 1.5vw, 1.8rem);
+  margin: clamp(2.4rem, 4vw, 4.5rem) 0 clamp(2rem, 4vw, 4rem);
+}
+
+body.personalized .personal-source-card {
+  border: 1px solid currentColor;
+  border-radius: 8px;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+body.personalized .personal-source-card img {
+  aspect-ratio: 4 / 3;
+  display: block;
+  object-fit: cover;
+  object-position: top left;
+  width: 100%;
+}
+
+body.personalized .personal-source-card span {
+  display: block;
+  font-size: clamp(1rem, 0.95vw, 1.2rem);
+  line-height: 1;
+  margin: 1.2rem 1.2rem 0.6rem;
+  opacity: 0.72;
+  text-transform: uppercase;
+}
+
+body.personalized .personal-source-card strong {
+  display: block;
+  font-size: clamp(1.35rem, 1.4vw, 1.75rem);
+  line-height: 1.25;
+  margin: 0 1.2rem 1.4rem;
+}
+
+body.personalized .personal-source-note {
+  justify-content: center;
+  padding: clamp(1.6rem, 2vw, 2.4rem);
+}
+
+body.personalized .personal-source-note span,
+body.personalized .personal-source-note strong {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+body.personalized .personal-source-note p {
+  font-size: clamp(1.2rem, 1.1vw, 1.45rem);
+  line-height: 1.5;
+  margin: 0;
+}
+
+body.personalized .personal-experience-item {
+  display: grid;
+  grid-template-columns: minmax(13rem, 0.35fr) minmax(0, 1fr);
+  gap: clamp(2rem, 4vw, 5rem);
+  border-bottom: 1px solid currentColor;
+  padding: clamp(2.4rem, 4vw, 4rem) 0;
+}
+
+body.personalized .personal-experience-meta p,
+body.personalized .personal-experience-meta span {
+  display: block;
+  font-size: clamp(1.15rem, 1.1vw, 1.45rem);
+  line-height: 1.35;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+body.personalized .personal-experience-meta span {
+  margin-top: 0.8rem;
+  opacity: 0.72;
+}
+
+body.personalized .personal-experience-body h4 {
+  font-size: clamp(2.2rem, 3vw, 4rem);
+  line-height: 1.05;
+  margin: 0 0 1.2rem;
+}
+
+body.personalized .personal-experience-body p {
+  font-size: clamp(1.45rem, 1.45vw, 2rem);
+  line-height: 1.55;
+  margin: 0;
+  max-width: 36em;
+}
+
+@media (min-width: 900px) {
+  body.personalized .about-left {
+    padding-right: clamp(3rem, 5vw, 7rem);
+  }
+}
+
+@media (max-width: 900px) {
+  body.personalized .project-case-metrics,
+  body.personalized .project-case-blocks {
+    grid-template-columns: 1fr;
+  }
+
+  body.personalized .project-case-metrics div {
+    border-right: 0;
+    border-bottom: 1px solid currentColor;
+  }
+
+  body.personalized .project-case-metrics div:last-child {
+    border-bottom: 0;
+  }
+
+  body.personalized .project-case-visuals {
+    grid-template-columns: 1fr;
+  }
+
+  body.personalized .project-case-visuals figure:first-child {
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 760px) {
+  .personal-logo-header {
+    border-width: 1.5px;
+    font-size: 0.78rem;
+    height: 42px;
+    width: 42px;
+  }
+
+  body.personal-home .canvas {
+    opacity: 1;
+  }
+
+  body.personal-home .personal-home-shape-overlay {
+    --stage-scale: 0.62;
+  }
+
+  body.personalized .projects-row {
+    gap: 1.2rem;
+  }
+
+  body.personalized .projects-row-right {
+    display: none;
+  }
+
+  body.personalized .project-personal-summary p,
+  body.personalized .project-personal-summary li {
+    font-size: 1.45rem;
+  }
+
+  body.personalized .project-case-intro h2 {
+    font-size: 2.7rem;
+  }
+
+  body.personalized .project-case-metrics div,
+  body.personalized .project-case-blocks article {
+    min-height: auto;
+    padding: 1.25rem;
+  }
+
+  body.personalized .personal-section-head,
+  body.personalized .personal-experience-item {
+    grid-template-columns: 1fr;
+  }
+
+  body.personalized .personal-source-grid {
+    grid-template-columns: 1fr;
+  }
+}

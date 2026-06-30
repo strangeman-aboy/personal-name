@@ -1,0 +1,13 @@
+source-resume.docx
+private-notes/
+draft-before-sharlee-*/
+.local-server-logs/
+qa-screenshots/
+tmp-*.html
+*.log
+.env
+.env.*
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pyc

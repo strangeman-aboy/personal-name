@@ -1,0 +1,499 @@
+:root {
+  color-scheme: dark;
+  --ink: #f9fff6;
+  --muted: rgba(249, 255, 246, 0.72);
+  --glass: rgba(235, 255, 246, 0.16);
+  --glass-strong: rgba(246, 255, 250, 0.28);
+  --ring: rgba(235, 255, 250, 0.54);
+  --shadow: rgba(8, 22, 18, 0.42);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: #10211c;
+  color: var(--ink);
+  font-family:
+    Inter,
+    "PingFang SC",
+    "Microsoft YaHei",
+    system-ui,
+    sans-serif;
+  letter-spacing: 0;
+  overflow: hidden;
+}
+
+button {
+  color: inherit;
+  font: inherit;
+}
+
+.space-shell {
+  height: 100svh;
+  isolation: isolate;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.space-bg {
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  object-position: 52% center;
+  position: absolute;
+  transform: scale(1.04);
+  width: 100%;
+  z-index: -4;
+}
+
+.shade {
+  background:
+    linear-gradient(90deg, rgba(6, 20, 16, 0.22), transparent 45%, rgba(6, 20, 16, 0.08)),
+    radial-gradient(circle at 75% 72%, rgba(250, 255, 232, 0.1), transparent 30%);
+  inset: 0;
+  position: absolute;
+  z-index: -3;
+}
+
+.bubble-film {
+  display: none;
+  backdrop-filter: blur(1.2px) saturate(1.08);
+  background-image:
+    radial-gradient(circle at 38% 34%, rgba(255, 255, 255, 0.42) 0 2px, transparent 3px),
+    radial-gradient(circle, rgba(232, 255, 247, 0.1) 0 31%, rgba(255, 255, 255, 0.28) 35%, rgba(255, 255, 255, 0.08) 48%, transparent 56%),
+    radial-gradient(circle, transparent 0 42%, rgba(136, 225, 207, 0.22) 46%, transparent 60%);
+  background-position:
+    18px 14px,
+    0 0,
+    36px 36px;
+  background-size:
+    72px 72px,
+    86px 86px,
+    86px 86px;
+  inset: -24px;
+  opacity: 0.78;
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+}
+
+.bubble-film::after {
+  background: linear-gradient(110deg, transparent 0 38%, rgba(255, 255, 255, 0.16) 46%, transparent 58% 100%);
+  content: "";
+  inset: 0;
+  mix-blend-mode: screen;
+  position: absolute;
+}
+
+.entry-copy {
+  display: none;
+  left: clamp(1.4rem, 5vw, 5.5rem);
+  max-width: min(46rem, calc(100vw - 2.8rem));
+  position: absolute;
+  top: clamp(2rem, 8vw, 6.5rem);
+  transition: opacity 280ms ease, transform 420ms ease;
+  z-index: 3;
+}
+
+.eyebrow,
+.line,
+.prompt-kicker,
+.prompt-note,
+.inside-label {
+  font-size: clamp(0.75rem, 1vw, 0.86rem);
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  color: rgba(235, 255, 232, 0.78);
+  margin-bottom: 0.75rem;
+}
+
+h1 {
+  font-size: clamp(4.2rem, 9vw, 8.8rem);
+  font-weight: 750;
+  letter-spacing: 0;
+  line-height: 0.86;
+  margin: 0;
+  text-shadow: 0 1.4rem 3.4rem var(--shadow);
+  white-space: nowrap;
+}
+
+.line {
+  color: var(--muted);
+  font-size: clamp(0.9rem, 1.2vw, 1.08rem);
+  letter-spacing: 0;
+  margin-top: clamp(1.1rem, 2vw, 1.7rem);
+  max-width: 26rem;
+  text-transform: none;
+}
+
+.guide-zone {
+  bottom: clamp(1rem, 4vw, 3rem);
+  position: absolute;
+  right: clamp(1rem, 4vw, 4rem);
+  transition: opacity 280ms ease, transform 420ms ease;
+  z-index: 8;
+}
+
+.heixiu-button {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  display: grid;
+  height: clamp(8.2rem, 14vw, 12rem);
+  justify-items: center;
+  padding: 0;
+  position: relative;
+  width: clamp(8.2rem, 14vw, 12rem);
+}
+
+.heixiu-ring {
+  display: none;
+  background:
+    radial-gradient(circle at 30% 28%, rgba(255, 255, 255, 0.56), transparent 15%),
+    radial-gradient(circle, rgba(232, 255, 245, 0.16), rgba(232, 255, 245, 0.05) 55%, transparent 67%);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 999px;
+  box-shadow:
+    inset 0 0 2.5rem rgba(255, 255, 255, 0.14),
+    0 1.2rem 2.8rem rgba(2, 18, 14, 0.26);
+  height: 82%;
+  position: absolute;
+  width: 82%;
+}
+
+.heixiu-sprite {
+  animation: heixiuFloat 3.4s ease-in-out infinite;
+  filter: drop-shadow(0 1rem 1.2rem rgba(0, 0, 0, 0.46));
+  height: 84%;
+  image-rendering: auto;
+  position: relative;
+  transform-origin: 50% 78%;
+  transition: transform 180ms ease;
+  width: 76%;
+}
+
+.heixiu-button:active .heixiu-sprite,
+.space-shell[data-state="awake"] .heixiu-sprite {
+  animation-name: heixiuFloat, heixiuWiggle;
+  animation-duration: 3.4s, 900ms;
+  animation-iteration-count: infinite, 1;
+}
+
+.heixiu-button:focus-visible,
+.space-bubble:focus-visible,
+.back-button:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.82);
+  outline-offset: 6px;
+}
+
+.space-bubbles {
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 6;
+}
+
+.space-bubble {
+  --x: 50%;
+  --y: 50%;
+  align-items: center;
+  backdrop-filter: blur(9px) saturate(1.2);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.34), rgba(236, 255, 245, 0.13)),
+    rgba(9, 31, 24, 0.26);
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 999px;
+  box-shadow:
+    inset 0 0 1.4rem rgba(255, 255, 255, 0.08),
+    0 1rem 2.4rem rgba(2, 18, 14, 0.28);
+  cursor: pointer;
+  display: flex;
+  height: auto;
+  justify-content: center;
+  left: var(--x);
+  opacity: 0;
+  padding: 0.88rem 1.15rem;
+  pointer-events: none;
+  position: absolute;
+  top: var(--y);
+  transform: translate(-50%, -50%) scale(0.28);
+  transition:
+    opacity 360ms ease,
+    transform 520ms cubic-bezier(0.2, 1.4, 0.28, 1),
+    box-shadow 220ms ease;
+  width: max-content;
+}
+
+.space-bubble span {
+  color: rgba(255, 255, 246, 0.92);
+  font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+  font-weight: 680;
+  letter-spacing: 0;
+  line-height: 1;
+  text-align: center;
+  text-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.38);
+  white-space: nowrap;
+}
+
+.space-bubble.project {
+  --x: 72%;
+  --y: 44%;
+}
+
+.space-bubble.life {
+  --x: 77%;
+  --y: 50%;
+}
+
+.space-bubble.idea {
+  --x: 70%;
+  --y: 56%;
+}
+
+.space-bubble.secret {
+  --x: 78%;
+  --y: 62%;
+}
+
+.space-shell[data-state="awake"] .space-bubble,
+.space-shell[data-state="selected"] .space-bubble {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.space-shell[data-state="awake"] .space-bubble:nth-child(2),
+.space-shell[data-state="selected"] .space-bubble:nth-child(2) {
+  transition-delay: 60ms;
+}
+
+.space-shell[data-state="awake"] .space-bubble:nth-child(3),
+.space-shell[data-state="selected"] .space-bubble:nth-child(3) {
+  transition-delay: 120ms;
+}
+
+.space-shell[data-state="awake"] .space-bubble:nth-child(4),
+.space-shell[data-state="selected"] .space-bubble:nth-child(4) {
+  transition-delay: 180ms;
+}
+
+.space-bubble:hover {
+  box-shadow:
+    inset 0 0 1.8rem rgba(255, 255, 255, 0.15),
+    0 1.5rem 3rem rgba(2, 18, 14, 0.36);
+  transform: translate(-50%, -50%) scale(1.04);
+}
+
+.space-bubble.is-selected {
+  animation: bubblePress 620ms ease both;
+  background:
+    radial-gradient(circle at 32% 23%, rgba(255, 255, 255, 0.84), transparent 15%),
+    rgba(239, 255, 241, 0.24);
+}
+
+.prompt {
+  backdrop-filter: blur(14px) saturate(1.12);
+  background: rgba(11, 31, 25, 0.38);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 8px;
+  bottom: clamp(1.4rem, 4vw, 3.4rem);
+  box-shadow: 0 1.4rem 3.2rem rgba(0, 0, 0, 0.2);
+  left: clamp(1.4rem, 5vw, 5.5rem);
+  max-width: min(24rem, calc(100vw - 2.8rem));
+  opacity: 0;
+  padding: clamp(1rem, 2vw, 1.35rem) clamp(1.1rem, 2vw, 1.55rem);
+  pointer-events: none;
+  position: absolute;
+  transform: translateY(1rem);
+  transition:
+    opacity 260ms ease,
+    transform 260ms ease;
+  z-index: 9;
+}
+
+.prompt-title {
+  font-size: clamp(1.5rem, 2.8vw, 2.45rem);
+  font-weight: 760;
+  letter-spacing: 0;
+  line-height: 1.05;
+  margin: 0.25rem 0 0.45rem;
+}
+
+.prompt-kicker,
+.prompt-note,
+.inside-label {
+  color: rgba(236, 255, 237, 0.72);
+}
+
+.space-shell[data-state="selected"] .prompt {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.inside-space {
+  align-content: center;
+  backdrop-filter: blur(3px) saturate(0.92);
+  background:
+    radial-gradient(circle at 58% 42%, rgba(239, 255, 237, 0.16), transparent 32%),
+    rgba(7, 22, 18, 0.9);
+  inset: 0;
+  opacity: 0;
+  padding: clamp(1.4rem, 5vw, 5.5rem);
+  pointer-events: none;
+  position: absolute;
+  transform: scale(1.06);
+  transition:
+    opacity 420ms ease,
+    transform 620ms ease;
+  z-index: 12;
+}
+
+.inside-space h2 {
+  font-size: clamp(4rem, 10vw, 9rem);
+  letter-spacing: 0;
+  line-height: 0.9;
+  margin: 0.6rem 0 1.4rem;
+}
+
+.inside-space p:last-child {
+  color: var(--muted);
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  line-height: 1.65;
+  max-width: 34rem;
+}
+
+.back-button {
+  background: rgba(235, 255, 246, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 999px;
+  cursor: pointer;
+  left: clamp(1.4rem, 5vw, 5.5rem);
+  padding: 0.75rem 1rem;
+  position: absolute;
+  top: clamp(1.4rem, 5vw, 4rem);
+}
+
+.space-shell[data-state="inside"] .inside-space {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+.space-shell[data-state="inside"] .guide-zone,
+.space-shell[data-state="inside"] .entry-copy,
+.space-shell[data-state="inside"] .space-bubbles,
+.space-shell[data-state="inside"] .prompt {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(0.8rem);
+}
+
+@keyframes heixiuFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-0.7rem) rotate(2deg);
+  }
+}
+
+@keyframes heixiuWiggle {
+  0%,
+  100% {
+    scale: 1;
+  }
+  35% {
+    scale: 1.14 0.86;
+  }
+  65% {
+    scale: 0.92 1.08;
+  }
+}
+
+@keyframes bubblePress {
+  0% {
+    transform: translate(-50%, -50%) scale(1.04);
+  }
+  45% {
+    transform: translate(-50%, -50%) scale(0.88);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+}
+
+@media (max-width: 760px) {
+  .space-bg {
+    object-position: 55% center;
+  }
+
+  .entry-copy {
+    top: 2rem;
+  }
+
+  .line {
+    max-width: 18rem;
+  }
+
+  .guide-zone {
+    bottom: 1.1rem;
+    left: 1rem;
+    right: auto;
+  }
+
+  .heixiu-button {
+    height: 6.6rem;
+    width: 6.6rem;
+  }
+
+  .space-bubble.project {
+    --x: 34%;
+    --y: 51%;
+  }
+
+  .space-bubble.life {
+    --x: 67%;
+    --y: 49%;
+  }
+
+  .space-bubble.idea {
+    --x: 30%;
+    --y: 69%;
+  }
+
+  .space-bubble.secret {
+    --x: 66%;
+    --y: 70%;
+  }
+
+  .prompt {
+    bottom: 7.6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
+}

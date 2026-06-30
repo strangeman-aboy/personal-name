@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HDC Shape Arranger</title>
+    <link rel="preload" href="/fonts/studio-feixen-sans-variable.woff2" as="font" crossorigin type="font/woff2" />
+    <link rel="stylesheet" href="/shape-arranger.css" />
+  </head>
+  <body>
+    <svg aria-hidden="true" class="defs">
+      <defs>
+        <linearGradient id="shapeGradient" x1="0%" y1="15%" x2="100%" y2="90%">
+          <stop offset="0%" stop-color="#75f0bd" />
+          <stop offset="42%" stop-color="#91e8ff" />
+          <stop offset="70%" stop-color="#f5a9ce" />
+          <stop offset="100%" stop-color="#ecff84" />
+        </linearGradient>
+        <filter id="shapeGlow" x="-35%" y="-35%" width="170%" height="170%">
+          <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur" />
+          <feOffset dx="0" dy="4" result="offset" />
+          <feComponentTransfer>
+            <feFuncA type="linear" slope="0.22" />
+          </feComponentTransfer>
+          <feMerge>
+            <feMergeNode />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+        <symbol id="shape-sphere" viewBox="0 0 72 72">
+          <circle cx="31.019" cy="18.93" r="3.555"></circle>
+        </symbol>
+        <symbol id="shape-magnet1" viewBox="0 0 72 72">
+          <path d="M61.028,23.378a3.555,3.555,0,0,0-6.682-2.432,4.39,4.39,0,0,1-8.25-3,3.555,3.555,0,1,0-6.682-2.432,11.5,11.5,0,0,0,21.614,7.867Z"></path>
+        </symbol>
+        <symbol id="shape-wave" viewBox="0 0 72 72">
+          <path d="M24.221,27.153a4.387,4.387,0,0,1-5.607-1.76A11.436,11.436,0,0,0,13.56,20.8a3.555,3.555,0,1,0-3.005,6.444,4.358,4.358,0,0,1,1.925,1.748,11.5,11.5,0,0,0,14.7,4.627,4.389,4.389,0,0,1,5.608,1.759,11.43,11.43,0,0,0,5.053,4.595,3.556,3.556,0,0,0,3.006-6.445,4.353,4.353,0,0,1-1.926-1.747,11.5,11.5,0,0,0-14.7-4.627Z"></path>
+        </symbol>
+        <symbol id="shape-magnet2" viewBox="0 0 72 72">
+          <path d="M13.411,43.392a3.555,3.555,0,0,0,5.825,4.078,4.39,4.39,0,1,1,7.191,5.036,3.555,3.555,0,0,0,5.825,4.078A11.5,11.5,0,1,0,13.411,43.392Z"></path>
+        </symbol>
+        <symbol id="shape-openloop" viewBox="0 0 72 72">
+          <path d="M61.5,47.329A11.5,11.5,0,0,0,50,35.829a3.556,3.556,0,1,0,0,7.111,4.389,4.389,0,1,1-4.39,4.389,3.556,3.556,0,0,0-7.111,0,11.5,11.5,0,0,0,23,0Z"></path>
+        </symbol>
+      </defs>
+    </svg>
+
+    <header class="topbar">
+      <nav>
+        <a href="/">Home</a>
+        <a href="/shape-inventory.html">元素盘点</a>
+      </nav>
+      <div>
+        <p class="eyebrow">Shape arranger</p>
+        <h1>摆首页字母</h1>
+        <p class="lead">点左边元素可以反复添加。拖动元素，或用右侧面板调旋转、缩放、层级。草稿会自动保存。</p>
+      </div>
+    </header>
+
+    <main class="app-shell">
+      <aside class="palette" aria-label="元素库">
+        <div class="panel-head">
+          <h2>元素库</h2>
+          <span>可重复</span>
+        </div>
+        <button class="palette-item" type="button" data-add-shape="sphere">
+          <span class="mini-shape"><svg viewBox="0 0 72 72"><use href="#shape-sphere"></use></svg></span>
+          <span><strong>Sphere</strong><small>圆点</small></span>
+        </button>
+        <button class="palette-item" type="button" data-add-shape="magnet1">
+          <span class="mini-shape"><svg viewBox="0 0 72 72"><use href="#shape-magnet1"></use></svg></span>
+          <span><strong>Magnet1</strong><small>短弯钩</small></span>
+        </button>
+        <button class="palette-item" type="button" data-add-shape="wave">
+          <span class="mini-shape"><svg viewBox="0 0 72 72"><use href="#shape-wave"></use></svg></span>
+          <span><strong>Wave</strong><small>S 形波浪</small></span>
+        </button>
+        <button class="palette-item" type="button" data-add-shape="magnet2">
+          <span class="mini-shape"><svg viewBox="0 0 72 72"><use href="#shape-magnet2"></use></svg></span>
+          <span><strong>Magnet2</strong><small>C 形弯钩</small></span>
+        </button>
+        <button class="palette-item" type="button" data-add-shape="openloop">
+          <span class="mini-shape"><svg viewBox="0 0 72 72"><use href="#shape-openloop"></use></svg></span>
+          <span><strong>OpenLoop</strong><small>大 C 环</small></span>
+        </button>
+
+        <div class="palette-note">
+          <p>当前画布：<strong id="current-layout-name">HD</strong></p>
+          <p>每次点击都会新增一个独立副本。</p>
+        </div>
+      </aside>
+
+      <section class="stage-wrap">
+        <div class="toolbar">
+          <div class="tabs" role="tablist" aria-label="布局状态">
+            <button type="button" class="tab is-active" data-layout="hd">第一行 HD</button>
+            <button type="button" class="tab" data-layout="dc">第二行 DC</button>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" id="show-home-text" checked />
+            <span>显示首页文字参照</span>
+          </label>
+        </div>
+
+        <div class="stage" id="stage" aria-label="摆放画布">
+          <div class="stage-grid"></div>
+          <div class="home-copy" id="home-copy" aria-hidden="true">
+            <h2>HEY, I'M HAO DONGCHEN</h2>
+            <h2>BUT YOU CAN CALL ME DONGCHEN</h2>
+            <p>I'm a front-end developer<br />& AI prototype builder</p>
+            <div class="home-links">see my projects&nbsp;&nbsp;&nbsp;more about me</div>
+          </div>
+          <div class="stage-origin"></div>
+          <div id="shape-layer"></div>
+        </div>
+      </section>
+
+      <aside class="inspector" aria-label="检查器">
+        <div class="panel-head">
+          <h2>调整</h2>
+          <span id="save-status">已保存</span>
+        </div>
+
+        <div class="empty-state" id="empty-state">
+          选中一个元素后，可以调位置、大小、旋转和层级。
+        </div>
+
+        <div class="controls" id="controls" hidden>
+          <div class="selected-title">
+            <strong id="selected-name"></strong>
+            <small id="selected-id"></small>
+          </div>
+
+          <label>
+            <span>X</span>
+            <input id="control-x" type="number" step="1" />
+          </label>
+          <label>
+            <span>Y</span>
+            <input id="control-y" type="number" step="1" />
+          </label>
+          <label>
+            <span>Scale</span>
+            <input id="control-scale" type="range" min="0.25" max="2.8" step="0.01" />
+            <output id="scale-output"></output>
+          </label>
+          <label>
+            <span>Rotate</span>
+            <input id="control-rotation" type="range" min="-180" max="180" step="1" />
+            <output id="rotation-output"></output>
+          </label>
+
+          <div class="button-row">
+            <button type="button" id="duplicate-shape">复制</button>
+            <button type="button" id="delete-shape">删除</button>
+          </div>
+          <div class="button-row">
+            <button type="button" id="bring-forward">上移一层</button>
+            <button type="button" id="send-backward">下移一层</button>
+          </div>
+        </div>
+
+        <div class="export-panel">
+          <div class="panel-head compact">
+            <h2>导出</h2>
+          </div>
+          <textarea id="export-output" spellcheck="false" aria-label="导出布局 JSON"></textarea>
+          <div class="button-row">
+            <button type="button" id="copy-json">复制 JSON</button>
+            <button type="button" id="refresh-json">刷新</button>
+          </div>
+          <div class="button-row">
+            <button type="button" id="copy-all-json">复制全部布局</button>
+            <button type="button" id="swap-layouts">交换两行</button>
+          </div>
+          <div class="button-row">
+            <button type="button" id="clear-layout">清空当前画布</button>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <script src="/shape-arranger.js" defer></script>
+  </body>
+</html>
