@@ -1827,13 +1827,22 @@ img {
 }
 
 .case-title {
-  padding-bottom: 1.8rem;
+  padding-bottom: clamp(1.25rem, 2vw, 1.8rem);
   border-bottom-color: var(--hairline);
+}
+
+.project-page .case-title h1 {
+  font-size: clamp(3.6rem, 5vw, 6.9rem);
+  line-height: 0.9;
 }
 
 .project-qianzhi-ai-platform .case-title h1 {
   font-size: clamp(3.2rem, 3.8vw, 5rem);
   text-transform: none;
+}
+
+.case-title .project-kicker {
+  margin-bottom: 1rem;
 }
 
 .case-title .project-kicker,
@@ -1843,13 +1852,29 @@ img {
 }
 
 .case-intro {
-  grid-template-columns: minmax(18rem, 0.32fr) minmax(0, 1fr);
-  gap: clamp(2.4rem, 4.8vw, 5.8rem);
-  margin-top: clamp(2.4rem, 4vw, 4rem);
+  grid-template-columns: minmax(30rem, 0.45fr) minmax(0, 1fr);
+  gap: clamp(2rem, 3.2vw, 4.2rem);
+  margin-top: clamp(1.6rem, 2.7vw, 2.8rem);
+  align-items: start;
 }
 
 .meta-list {
-  gap: 1.25rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem 1.45rem;
+}
+
+.meta-list div {
+  padding-top: 0.85rem;
+}
+
+.meta-list dt {
+  margin-bottom: 0.45rem;
+  font-size: clamp(1rem, 0.9vw, 1.18rem);
+}
+
+.meta-list dd {
+  font-size: clamp(1.18rem, 1.05vw, 1.42rem);
+  line-height: 1.32;
 }
 
 .meta-list div,
@@ -1869,7 +1894,24 @@ img {
 }
 
 .case-description p {
-  max-width: 54em;
+  max-width: 43em;
+  font-size: clamp(1.42rem, 1.25vw, 1.75rem);
+  line-height: 1.55;
+}
+
+.project-actions {
+  margin-top: clamp(1.35rem, 2vw, 2rem);
+}
+
+.case-story {
+  margin-top: clamp(2.8rem, 4.2vw, 5rem);
+  gap: clamp(2rem, 3vw, 3.4rem);
+}
+
+.case-block {
+  grid-template-columns: minmax(10.5rem, 0.18fr) minmax(0, 1fr);
+  gap: clamp(1.8rem, 3.2vw, 4rem);
+  padding-top: clamp(1.7rem, 2.5vw, 2.4rem);
 }
 
 .case-metrics {
@@ -1950,8 +1992,15 @@ img {
 
 .case-block-content h3 {
   color: #17223d;
-  font-size: clamp(2.1rem, 2.45vw, 3.5rem);
+  font-size: clamp(2rem, 2.25vw, 3.15rem);
+  line-height: 1.05;
   text-transform: none;
+}
+
+.case-block-content p,
+.case-block-content li {
+  font-size: clamp(1.32rem, 1.12vw, 1.6rem);
+  line-height: 1.56;
 }
 
 .chip {
@@ -2004,6 +2053,15 @@ img {
   .qianmind-flow,
   .case-contribution-grid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .case-intro,
+  .case-block {
+    grid-template-columns: 1fr;
+  }
+
+  .case-story {
+    margin-top: clamp(2.6rem, 6vw, 4.2rem);
   }
 
   .case-gallery {
@@ -2081,6 +2139,11 @@ img {
   .qianmind-flow,
   .case-contribution-grid {
     grid-template-columns: 1fr;
+  }
+
+  .meta-list {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .qianmind-flow li {
@@ -2181,7 +2244,7 @@ def header(current: str) -> str:
     """
 
 
-ASSET_VERSION = "20260630-overlap-1"
+ASSET_VERSION = "20260630-detail-density-1"
 
 
 def html_page(title: str, description: str, body: str, script: bool = False, body_class: str = "") -> str:
