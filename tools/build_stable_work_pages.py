@@ -20,14 +20,14 @@ WORK_GROUPS = [
                 "year": "2026",
                 "role": "产品策略 / 前端原型 / 交易流程设计",
                 "client": "乾智 QianMind",
-                "image": "",
-                "image_alt": "",
+                "image": "/external-assets/qianzhi/hero-creator-console.png",
+                "image_alt": "QianMind creator console screen",
                 "source_label": "官网文案 + 产品 Demo 整理",
-                "cover_kind": "brand",
+                "cover_kind": "qianmind",
                 "logo": "/external-assets/qianzhi/logo.png",
-                "headline": "专业 Agent，按结果交付",
-                "subhead": "描述目标，乾智把任务、权限、证据和结算整理成一条清晰路径。",
-                "summary": "QianMind 让用户按结果付费，让 Agent 替创作者接任务赚钱。平台负责匹配、托管、证据和结算。",
+                "headline": "专业 Agent 按结果交付",
+                "subhead": "把任务、权限、预算、交付证据和结算放进同一条清晰路径。",
+                "summary": "QianMind 是 AI Agent 服务交易基础设施：用户描述目标，平台托管预算、匹配能力、沉淀证据，最后按结果验收结算。",
                 "links": [
                     {"label": "官网", "href": "https://qianmind-official-site.netlify.app"},
                     {"label": "产品 Demo", "href": "https://qianzhi-agent-demo.netlify.app"},
@@ -39,6 +39,28 @@ WORK_GROUPS = [
                     "证据可追溯",
                     "创作者保留能力包",
                 ],
+                "stats": [
+                    {"value": "01", "label": "描述目标"},
+                    {"value": "02", "label": "匹配 Agent"},
+                    {"value": "03", "label": "验收结算"},
+                ],
+                "contributions": [
+                    {
+                        "label": "Front-end",
+                        "title": "把交易链路做成可演示界面",
+                        "body": "梳理任务录入、证据复核、创作者控制台等关键状态，让产品逻辑可以被直接看见。",
+                    },
+                    {
+                        "label": "Product",
+                        "title": "压缩官网与 Demo 的表达",
+                        "body": "把复杂概念收束成“发现能力、匹配任务、托管交付”的短句与页面结构。",
+                    },
+                    {
+                        "label": "Case",
+                        "title": "整理成可展示的作品案例",
+                        "body": "保留真实产品截图，用轻量信息栏解释我负责的部分，而不是堆说明文字。",
+                    },
+                ],
                 "flow": [
                     "描述目标",
                     "匹配 Agent",
@@ -46,7 +68,7 @@ WORK_GROUPS = [
                     "验收结算",
                 ],
                 "gallery_title": "产品演示",
-                "gallery_intro": "把核心链路拆成三个可看的界面：任务录入、证据复核、创作者控制台。",
+                "gallery_intro": "三张图只讲一件事：任务如何被创建、交付如何被复核、能力如何被经营。",
                 "gallery": [
                     {
                         "image": "/external-assets/qianzhi/hero-task-intake.png",
@@ -1234,6 +1256,820 @@ img {
     width: min(100% - 4.4rem, 122rem);
   }
 }
+
+/* 2026 inner portfolio refresh: soft grid, integrated previews, light case-study surfaces. */
+:root {
+  --cyan: #089fc2;
+  --cyan-soft: rgba(0, 173, 207, 0.12);
+  --blue: #5875f6;
+  --paper-blue: #f3f8fb;
+  --hairline: rgba(80, 107, 132, 0.2);
+  --glass: rgba(255, 255, 255, 0.68);
+  --glass-strong: rgba(255, 255, 255, 0.84);
+  --soft-shadow: 0 22px 70px rgba(42, 80, 112, 0.11);
+}
+
+.work-index,
+.project-page {
+  background:
+    linear-gradient(rgba(104, 188, 211, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(104, 188, 211, 0.12) 1px, transparent 1px),
+    radial-gradient(circle at 78% 8%, rgba(102, 229, 220, 0.18), transparent 30rem),
+    linear-gradient(180deg, #f7fbfd 0%, #f3f7fa 54%, #f6f7f9 100%);
+  background-size: 6.4rem 6.4rem, 6.4rem 6.4rem, auto, auto;
+}
+
+.work-index::before,
+.project-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(247, 251, 253, 0.94), rgba(247, 251, 253, 0.38) 18%, rgba(247, 251, 253, 0.18) 82%, rgba(247, 251, 253, 0.92)),
+    linear-gradient(180deg, rgba(247, 251, 253, 0.94), transparent 24%, rgba(247, 251, 253, 0.82));
+}
+
+.work-index::after,
+.project-page::after {
+  opacity: 0.1;
+}
+
+.work-index .site-header,
+.project-page .site-header,
+.work-index .work-shell,
+.project-page .project-shell {
+  position: relative;
+  z-index: 1;
+}
+
+.work-index .site-header,
+.project-page .site-header {
+  position: sticky;
+  top: 0;
+  margin: 1.4rem auto 0;
+  width: min(112rem, calc(100% - 4.4rem));
+  padding: 1.05rem 1.4rem;
+  border: 1px solid var(--hairline);
+  border-radius: 1.2rem;
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: 0 18px 52px rgba(48, 78, 104, 0.08);
+  backdrop-filter: blur(18px);
+  pointer-events: auto;
+}
+
+.work-index .brand,
+.project-page .brand {
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.work-index .brand-mark,
+.project-page .brand-mark {
+  width: 2.8rem;
+  height: 2.8rem;
+  border-width: 1.5px;
+}
+
+.work-index .brand-mark::before,
+.work-index .brand-mark::after,
+.project-page .brand-mark::before,
+.project-page .brand-mark::after {
+  border-width: 1.5px;
+}
+
+.work-index .nav-links,
+.project-page .nav-links {
+  text-transform: none;
+}
+
+.work-shell {
+  width: min(118rem, calc(100% - 4.4rem));
+  min-height: calc(100vh - 9rem);
+  margin: 0 auto;
+  grid-template-columns: minmax(28rem, 0.56fr) minmax(42rem, 1fr);
+  gap: clamp(2.6rem, 5vw, 6rem);
+  padding: clamp(5.4rem, 8vw, 9.5rem) 0 clamp(5rem, 8vw, 8rem);
+}
+
+.preview-pane {
+  min-height: auto;
+  justify-content: flex-start;
+  position: sticky;
+  top: 10rem;
+  align-self: start;
+}
+
+.preview-card {
+  width: 100%;
+  margin: 0;
+  aspect-ratio: auto;
+  border-color: var(--hairline);
+  border-radius: 1.2rem;
+  background:
+    linear-gradient(rgba(104, 188, 211, 0.075) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(104, 188, 211, 0.075) 1px, transparent 1px),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.7), rgba(236, 249, 251, 0.32));
+  background-size: 4.8rem 4.8rem, 4.8rem 4.8rem, auto;
+  box-shadow: 0 20px 70px rgba(43, 72, 102, 0.08);
+}
+
+.preview-product {
+  position: relative;
+  min-height: 100%;
+  padding: clamp(2rem, 3.2vw, 3.8rem);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 1.8rem;
+}
+
+.preview-product-copy {
+  display: grid;
+  gap: 0.9rem;
+  align-content: start;
+  position: relative;
+  z-index: 2;
+  max-width: 42rem;
+}
+
+.preview-product-copy > span,
+.preview-product-copy > div span,
+.case-brand-logo span,
+.qianmind-flow span,
+.case-contribution-grid article > span {
+  color: var(--cyan);
+}
+
+.preview-product-copy > span {
+  font-size: clamp(1rem, 0.95vw, 1.25rem);
+  font-weight: 820;
+  text-transform: uppercase;
+}
+
+.preview-product-copy strong {
+  color: #15213b;
+  font-size: clamp(3.4rem, 4.4vw, 6.5rem);
+  font-weight: 850;
+  line-height: 0.9;
+  text-transform: none;
+}
+
+.preview-product-copy p {
+  max-width: 28em;
+  color: #52617b;
+  font-size: clamp(1.25rem, 1.15vw, 1.55rem);
+  line-height: 1.55;
+}
+
+.preview-product-copy > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.25rem;
+}
+
+.preview-product-copy > div span {
+  border: 1px solid rgba(8, 159, 194, 0.2);
+  border-radius: 999px;
+  padding: 0.46em 0.7em;
+  background: rgba(255, 255, 255, 0.58);
+  font-size: 1.05rem;
+  font-weight: 720;
+  line-height: 1;
+}
+
+.preview-product-stage {
+  position: relative;
+  min-height: 24rem;
+}
+
+.preview-shot,
+.preview-single-image {
+  position: absolute;
+  border: 1px solid var(--hairline);
+  border-radius: 1.1rem;
+  background: var(--glass-strong);
+  box-shadow: 0 18px 46px rgba(43, 72, 102, 0.12);
+  object-fit: cover;
+  object-position: top left;
+}
+
+.preview-shot-main {
+  left: 4%;
+  right: 4%;
+  bottom: 3%;
+  width: 82%;
+  height: 64%;
+}
+
+.preview-shot-float {
+  right: 0;
+  bottom: 20%;
+  width: 48%;
+  height: 42%;
+}
+
+.preview-shot-tail {
+  left: 0;
+  bottom: 0;
+  width: 44%;
+  height: 36%;
+}
+
+.preview-product-single {
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+
+.preview-single-image {
+  position: relative;
+  width: 100%;
+  height: min(31rem, 45vh);
+}
+
+.preview-brief {
+  min-height: auto;
+  padding: clamp(2.2rem, 3vw, 3.4rem);
+  display: grid;
+  grid-template-rows: auto auto auto;
+  gap: clamp(2.2rem, 3vw, 3.8rem);
+}
+
+.preview-brief-top,
+.preview-brief-bottom {
+  display: grid;
+  gap: 1.4rem;
+}
+
+.preview-brief-top {
+  grid-template-columns: 1fr auto;
+  align-items: start;
+}
+
+.preview-brief-kicker {
+  color: var(--cyan);
+  font-size: clamp(1rem, 0.9vw, 1.18rem);
+  font-weight: 780;
+  line-height: 1.35;
+}
+
+.preview-brief-number {
+  color: rgba(82, 96, 125, 0.22);
+  font-size: clamp(4.6rem, 6.3vw, 7.8rem);
+  font-weight: 860;
+  line-height: 0.78;
+}
+
+.preview-brief-body {
+  align-self: start;
+  display: grid;
+  gap: 1.3rem;
+  margin: clamp(2.4rem, 5vw, 5.4rem) 0 clamp(1.8rem, 3.5vw, 3.8rem);
+}
+
+.preview-brief-body strong {
+  color: #15213b;
+  font-size: clamp(3.4rem, 4vw, 5.6rem);
+  font-weight: 850;
+  line-height: 0.96;
+}
+
+.preview-brief-body p {
+  margin: 0;
+  color: #52617b;
+  font-size: clamp(1.18rem, 1vw, 1.36rem);
+  line-height: 1.66;
+}
+
+.preview-brief-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.preview-brief-tags span {
+  border: 1px solid rgba(8, 159, 194, 0.17);
+  border-radius: 999px;
+  padding: 0.45em 0.68em;
+  background: rgba(255, 255, 255, 0.46);
+  color: #337b90;
+  font-size: 1.02rem;
+  font-weight: 720;
+  line-height: 1;
+}
+
+.preview-brief-points {
+  list-style: none;
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 1.2rem 0 0;
+  border-top: 1px solid rgba(82, 96, 125, 0.16);
+}
+
+.preview-brief-points li {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: 0.9rem;
+  align-items: start;
+}
+
+.preview-brief-points span {
+  color: rgba(82, 96, 125, 0.42);
+  font-size: 1rem;
+  font-weight: 780;
+}
+
+.preview-brief-points p {
+  margin: 0;
+  color: #52617b;
+  font-size: 1.08rem;
+  line-height: 1.48;
+}
+
+.preview-caption {
+  width: 100%;
+  margin: 1.2rem 0 0;
+  color: #53617a;
+}
+
+.work-list-panel {
+  max-width: none;
+  padding: clamp(1.2rem, 2vw, 2rem);
+}
+
+.page-head {
+  border-color: var(--hairline);
+  padding-bottom: 1.6rem;
+  margin-bottom: 2.2rem;
+}
+
+.page-head h1 {
+  color: #17223d;
+  font-size: clamp(4rem, 5.3vw, 7rem);
+  text-transform: none;
+}
+
+.page-head span {
+  color: var(--cyan);
+}
+
+.work-group-head {
+  color: var(--cyan);
+}
+
+.work-group-head p {
+  color: #60708b;
+}
+
+.work-item {
+  border-bottom-color: var(--hairline);
+}
+
+.work-link {
+  min-height: clamp(5.8rem, 5.4vw, 7.2rem);
+}
+
+.work-title strong {
+  color: #17223d;
+  font-size: clamp(2rem, 1.8vw, 2.75rem);
+  text-transform: none;
+}
+
+.work-category {
+  color: #61708b;
+  font-size: clamp(1.15rem, 1vw, 1.42rem);
+}
+
+.work-link:hover .work-title strong,
+.work-link:focus-visible .work-title strong,
+.work-link.is-active .work-title strong {
+  color: var(--cyan);
+}
+
+.project-shell {
+  width: min(118rem, calc(100% - 4.4rem));
+  padding-top: clamp(5.6rem, 8vw, 8.8rem);
+}
+
+.back-link {
+  margin-bottom: 2.2rem;
+  color: #51617d;
+  text-transform: none;
+}
+
+.case-cover-qianmind {
+  margin-bottom: clamp(2.8rem, 5vw, 5.2rem);
+}
+
+.qianmind-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: clamp(54rem, 58vw, 69rem);
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: clamp(2rem, 4vw, 5.2rem);
+  padding: clamp(2.4rem, 4.8vw, 5.6rem);
+  border: 1px solid var(--hairline);
+  border-radius: 1.6rem;
+  background:
+    linear-gradient(rgba(104, 188, 211, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(104, 188, 211, 0.1) 1px, transparent 1px),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(235, 250, 252, 0.7));
+  background-size: 5.6rem 5.6rem, 5.6rem 5.6rem, auto;
+  box-shadow: var(--soft-shadow);
+}
+
+.qianmind-hero-copy {
+  align-self: center;
+  display: grid;
+  gap: 1.35rem;
+  max-width: 48rem;
+}
+
+.qianmind-hero-copy h2 {
+  margin: 0;
+  color: #121d36;
+  font-size: clamp(4.2rem, 5.7vw, 8rem);
+  font-weight: 860;
+  line-height: 0.96;
+  text-transform: none;
+}
+
+.qianmind-hero-copy p {
+  margin: 0;
+  color: #52617b;
+  font-size: clamp(1.6rem, 1.45vw, 2rem);
+  line-height: 1.58;
+}
+
+.qianmind-hero-links,
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.qianmind-hero-links a,
+.pill-link {
+  border: 1px solid rgba(8, 159, 194, 0.28);
+  border-radius: 999px;
+  padding: 0.72em 1em;
+  background: rgba(255, 255, 255, 0.62);
+  color: #17223d;
+  font-size: clamp(1.1rem, 1vw, 1.32rem);
+  font-weight: 780;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: none;
+}
+
+.qianmind-hero-links a:hover,
+.qianmind-hero-links a:focus-visible,
+.pill-link:hover,
+.pill-link:focus-visible {
+  color: #ffffff;
+  background: var(--cyan);
+  border-color: var(--cyan);
+}
+
+.qianmind-visual {
+  position: relative;
+  min-height: 39rem;
+  align-self: stretch;
+}
+
+.qianmind-shot {
+  position: absolute;
+  border: 1px solid var(--hairline);
+  border-radius: 1.5rem;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 24px 64px rgba(43, 72, 102, 0.14);
+  object-fit: cover;
+  object-position: top left;
+}
+
+.qianmind-shot-main {
+  top: 8%;
+  right: 0;
+  width: 78%;
+  height: 62%;
+}
+
+.qianmind-shot-left {
+  left: 0;
+  bottom: 5%;
+  width: 48%;
+  height: 40%;
+}
+
+.qianmind-shot-right {
+  right: 5%;
+  bottom: 0;
+  width: 42%;
+  height: 36%;
+}
+
+.qianmind-flow {
+  grid-column: 1 / -1;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--hairline);
+}
+
+.qianmind-flow li {
+  min-height: 7.8rem;
+  padding: 1.4rem 1.2rem;
+  border-right: 1px solid var(--hairline);
+}
+
+.qianmind-flow li:last-child {
+  border-right: 0;
+}
+
+.qianmind-flow span,
+.case-contribution-grid article > span {
+  display: block;
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+  font-weight: 840;
+}
+
+.qianmind-flow strong {
+  color: #17223d;
+  font-size: clamp(1.55rem, 1.4vw, 2rem);
+  line-height: 1.1;
+}
+
+.case-title {
+  padding-bottom: 1.8rem;
+  border-bottom-color: var(--hairline);
+}
+
+.project-qianzhi-ai-platform .case-title h1 {
+  font-size: clamp(3.2rem, 3.8vw, 5rem);
+  text-transform: none;
+}
+
+.case-title .project-kicker,
+.case-demo-head span,
+.case-block h2 {
+  color: var(--cyan);
+}
+
+.case-intro {
+  grid-template-columns: minmax(18rem, 0.32fr) minmax(0, 1fr);
+  gap: clamp(2.4rem, 4.8vw, 5.8rem);
+  margin-top: clamp(2.4rem, 4vw, 4rem);
+}
+
+.meta-list {
+  gap: 1.25rem;
+}
+
+.meta-list div,
+.case-demo-head,
+.case-block,
+.chip-row,
+.next-project {
+  border-color: var(--hairline);
+}
+
+.meta-list dd,
+.case-description p,
+.case-demo-head p,
+.case-block-content p,
+.case-block-content li {
+  color: #52617b;
+}
+
+.case-description p {
+  max-width: 54em;
+}
+
+.case-metrics {
+  border-color: var(--hairline);
+}
+
+.case-metrics div {
+  border-color: var(--hairline);
+}
+
+.case-metrics strong {
+  color: var(--cyan);
+}
+
+.case-gallery {
+  grid-template-columns: minmax(0, 1.18fr) minmax(0, 0.82fr);
+  align-items: start;
+}
+
+.case-gallery figure {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.case-gallery figure:first-child {
+  grid-row: span 2;
+}
+
+.case-gallery img {
+  aspect-ratio: 16 / 10;
+  border-color: var(--hairline);
+  border-radius: 1.3rem;
+  box-shadow: 0 20px 54px rgba(43, 72, 102, 0.1);
+}
+
+.case-gallery figure:first-child img {
+  aspect-ratio: 16 / 12;
+}
+
+.case-gallery figcaption {
+  color: #60708b;
+}
+
+.case-contributions {
+  margin-top: clamp(3rem, 5vw, 5.2rem);
+}
+
+.case-contribution-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  border: 1px solid var(--hairline);
+  border-radius: 1.4rem;
+  overflow: hidden;
+  background: var(--hairline);
+  box-shadow: 0 18px 46px rgba(43, 72, 102, 0.08);
+}
+
+.case-contribution-grid article {
+  min-height: 18rem;
+  padding: clamp(1.8rem, 2.4vw, 2.8rem);
+  background: rgba(255, 255, 255, 0.74);
+}
+
+.case-contribution-grid h3 {
+  margin: 0 0 1rem;
+  color: #17223d;
+  font-size: clamp(1.7rem, 1.55vw, 2.3rem);
+  line-height: 1.12;
+}
+
+.case-contribution-grid p {
+  margin: 0;
+  color: #52617b;
+  font-size: clamp(1.25rem, 1.1vw, 1.48rem);
+  line-height: 1.58;
+}
+
+.case-block-content h3 {
+  color: #17223d;
+  font-size: clamp(2.1rem, 2.45vw, 3.5rem);
+  text-transform: none;
+}
+
+.chip {
+  border-color: rgba(8, 159, 194, 0.24);
+  background: rgba(255, 255, 255, 0.5);
+  color: #51617d;
+}
+
+.next-project strong {
+  color: #17223d;
+  text-transform: none;
+}
+
+@media (max-width: 980px) {
+  .work-index .site-header,
+  .project-page .site-header {
+    position: relative;
+  }
+
+  .work-shell {
+    width: min(100% - 3.2rem, 72rem);
+    grid-template-columns: 1fr;
+    padding-top: 3rem;
+  }
+
+  .preview-pane {
+    position: static;
+  }
+
+  .preview-card {
+    aspect-ratio: auto;
+    min-height: auto;
+  }
+
+  .preview-brief {
+    min-height: auto;
+  }
+
+  .qianmind-hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .qianmind-visual {
+    min-height: 44rem;
+  }
+
+  .qianmind-flow,
+  .case-contribution-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .case-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .case-gallery figure:first-child {
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 660px) {
+  .work-index .site-header,
+  .project-page .site-header {
+    width: min(100% - 2rem, 42rem);
+    margin-top: 1rem;
+  }
+
+  .work-shell,
+  .project-shell {
+    width: min(100% - 2.4rem, 42rem);
+  }
+
+  .preview-card {
+    min-height: auto;
+  }
+
+  .preview-product {
+    padding: 1.6rem;
+  }
+
+  .preview-brief {
+    padding: 1.7rem;
+    gap: 2rem;
+  }
+
+  .preview-brief-body strong {
+    font-size: clamp(2.9rem, 13vw, 4.4rem);
+  }
+
+  .preview-brief-body {
+    margin: 1.2rem 0 0.4rem;
+  }
+
+  .preview-brief-number {
+    display: none;
+  }
+
+  .preview-brief-points {
+    display: none;
+  }
+
+  .preview-product-copy strong,
+  .qianmind-hero-copy h2 {
+    font-size: clamp(3.4rem, 12vw, 5.4rem);
+  }
+
+  .qianmind-visual {
+    min-height: 36rem;
+  }
+
+  .qianmind-shot-main {
+    width: 92%;
+    height: 54%;
+  }
+
+  .qianmind-shot-left {
+    width: 58%;
+  }
+
+  .qianmind-shot-right {
+    width: 54%;
+  }
+
+  .qianmind-flow,
+  .case-contribution-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .qianmind-flow li {
+    border-right: 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .qianmind-flow li:last-child {
+    border-bottom: 0;
+  }
+}
 """
 
 
@@ -1257,23 +2093,32 @@ JS = r"""
   function setActive(row) {
     rows.forEach((item) => item.classList.toggle("is-active", item === row));
 
-    const image = row.dataset.previewImage;
+    const badges = (row.dataset.previewBadges || "").split("|").filter(Boolean).slice(0, 4);
+    const points = (row.dataset.previewPoints || "").split("|").filter(Boolean).slice(0, 3);
     const title = row.dataset.previewTitle || "";
     const category = row.dataset.previewCategory || "";
     const summary = row.dataset.previewSummary || "";
     const source = row.dataset.previewSource || "";
+    const index = String(rows.indexOf(row) + 1).padStart(2, "0");
 
-    if (image) {
-      frame.innerHTML = `<img src="${escapeText(image)}" alt="${escapeText(title)} preview" />`;
-    } else {
-      frame.innerHTML = `
-        <div class="preview-copy">
-          <span>${escapeText(category)}</span>
+    frame.innerHTML = `
+      <div class="preview-brief">
+        <div class="preview-brief-top">
+          <span class="preview-brief-kicker">${escapeText(category)}</span>
+          <span class="preview-brief-number">${index}</span>
+        </div>
+        <div class="preview-brief-body">
           <strong>${escapeText(title)}</strong>
           <p>${escapeText(summary)}</p>
         </div>
-      `;
-    }
+        <div class="preview-brief-bottom">
+          <div class="preview-brief-tags">${badges.map((badge) => `<span>${escapeText(badge)}</span>`).join("")}</div>
+          <ol class="preview-brief-points">
+            ${points.map((point, pointIndex) => `<li><span>${String(pointIndex + 1).padStart(2, "0")}</span><p>${escapeText(point)}</p></li>`).join("")}
+          </ol>
+        </div>
+      </div>
+    `;
 
     if (captionTitle) captionTitle.textContent = title;
     if (captionSource) captionSource.textContent = source;
@@ -1314,8 +2159,9 @@ def header(current: str) -> str:
     """
 
 
-def html_page(title: str, description: str, body: str, script: bool = False) -> str:
+def html_page(title: str, description: str, body: str, script: bool = False, body_class: str = "") -> str:
     script_tag = '<script src="/work/work-stable.js" defer></script>' if script else ""
+    body_class_attr = f' class="{esc(body_class)}"' if body_class else ""
     return f"""<!doctype html>
 <html lang="zh-CN">
   <head>
@@ -1328,7 +2174,7 @@ def html_page(title: str, description: str, body: str, script: bool = False) -> 
     <link rel="preload" href="/fonts/studio-feixen-sans-variable.woff2" as="font" crossorigin type="font/woff2" />
     <link rel="stylesheet" href="/work/work-stable.css" />
   </head>
-  <body>
+  <body{body_class_attr}>
 {body}
 {script_tag}
   </body>
@@ -1336,13 +2182,37 @@ def html_page(title: str, description: str, body: str, script: bool = False) -> 
 """
 
 
+def preview_images(item: dict) -> list[str]:
+    images = [entry["image"] for entry in item.get("gallery", []) if entry.get("image")]
+    if not images and item.get("image"):
+        images = [item["image"]]
+    return images
+
+
+def preview_points(item: dict) -> list[str]:
+    if item.get("contributions"):
+        return [
+            f"{entry['label']} · {entry['title']}"
+            for entry in item.get("contributions", [])
+            if entry.get("label") and entry.get("title")
+        ]
+    return [
+        section.get("title", "")
+        for section in item.get("sections", [])
+        if section.get("title")
+    ]
+
+
 def render_work_row(item: dict) -> str:
+    badges = "|".join(item.get("badges", item.get("tags", []))[:4])
+    points = "|".join(preview_points(item)[:3])
     return f"""
           <li class="work-item">
             <a class="work-link" href="/work/{esc(item['slug'])}/" data-preview-row
               data-preview-title="{esc(item['title'])}"
               data-preview-category="{esc(item['category'])}"
-              data-preview-image="{esc(item.get('image', ''))}"
+              data-preview-badges="{esc(badges)}"
+              data-preview-points="{esc(points)}"
               data-preview-summary="{esc(item['summary'])}"
               data-preview-source="{esc(item['source_label'])}">
               <div class="work-title">
@@ -1356,13 +2226,30 @@ def render_work_row(item: dict) -> str:
 
 
 def render_preview_frame(item: dict) -> str:
-    if item.get("image"):
-        return f'<img src="{esc(item["image"])}" alt="{esc(item["title"])} preview" />'
+    try:
+        index = WORK_DETAILS.index(item) + 1
+    except ValueError:
+        index = 1
+    badges = item.get("badges", item.get("tags", []))[:4]
+    badges_html = "".join(f"<span>{esc(badge)}</span>" for badge in badges)
+    points_html = "".join(
+        f"<li><span>{point_index:02d}</span><p>{esc(point)}</p></li>"
+        for point_index, point in enumerate(preview_points(item)[:3], start=1)
+    )
     return f"""
-          <div class="preview-copy">
-            <span>{esc(item['category'])}</span>
-            <strong>{esc(item['title'])}</strong>
-            <p>{esc(item['summary'])}</p>
+          <div class="preview-brief">
+            <div class="preview-brief-top">
+              <span class="preview-brief-kicker">{esc(item['category'])}</span>
+              <span class="preview-brief-number">{index:02d}</span>
+            </div>
+            <div class="preview-brief-body">
+              <strong>{esc(item['title'])}</strong>
+              <p>{esc(item['summary'])}</p>
+            </div>
+            <div class="preview-brief-bottom">
+              <div class="preview-brief-tags">{badges_html}</div>
+              <ol class="preview-brief-points">{points_html}</ol>
+            </div>
           </div>
     """
 
@@ -1409,7 +2296,7 @@ def render_work_page() -> str:
       </section>
     </main>
     """
-    return html_page("Dongchen Hao | 作品", "郝东晨的项目、实习经历与真实业务实践。", body, script=True)
+    return html_page("Dongchen Hao | 作品", "郝东晨的项目、实习经历与真实业务实践。", body, script=True, body_class="work-index")
 
 
 def render_links(project: dict) -> str:
@@ -1422,6 +2309,49 @@ def render_links(project: dict) -> str:
 
 
 def render_cover(project: dict) -> str:
+    if project.get("cover_kind") == "qianmind":
+        badges = "".join(f"<span>{esc(item)}</span>" for item in project.get("badges", []))
+        flow = "".join(
+            f"""
+              <li>
+                <span>{index:02d}</span>
+                <strong>{esc(item)}</strong>
+              </li>
+            """
+            for index, item in enumerate(project.get("flow", []), start=1)
+        )
+        links = "".join(
+            f'<a href="{esc(link["href"])}" target="_blank" rel="noreferrer">{esc(link["label"])}</a>'
+            for link in project.get("links", [])[:2]
+        )
+        gallery = project.get("gallery", [])
+        hero = gallery[0]["image"] if gallery else project.get("image", "")
+        float_one = gallery[1]["image"] if len(gallery) > 1 else hero
+        float_two = gallery[2]["image"] if len(gallery) > 2 else hero
+        logo = project.get("logo")
+        logo_html = f'<img src="{esc(logo)}" alt="{esc(project["title"])} logo" />' if logo else ""
+        return f"""
+      <section class="case-cover case-cover-qianmind" aria-label="QianMind 项目封面">
+        <div class="qianmind-hero">
+          <div class="qianmind-hero-copy">
+            <div class="case-brand-logo">{logo_html}<span>{esc(project['category'])}</span></div>
+            <h2>{esc(project.get('headline', project['title']))}</h2>
+            <p>{esc(project.get('subhead', project['summary']))}</p>
+            <div class="case-brand-badges">{badges}</div>
+            <div class="qianmind-hero-links">{links}</div>
+          </div>
+          <div class="qianmind-visual" aria-label="QianMind 产品界面展示">
+            <img class="qianmind-shot qianmind-shot-main" src="{esc(hero)}" alt="{esc(project['title'])} task intake screen" />
+            <img class="qianmind-shot qianmind-shot-left" src="{esc(float_one)}" alt="{esc(project['title'])} evidence review screen" />
+            <img class="qianmind-shot qianmind-shot-right" src="{esc(float_two)}" alt="{esc(project['title'])} creator console screen" />
+          </div>
+          <ol class="qianmind-flow">
+{flow}
+          </ol>
+        </div>
+        <p class="case-cover-note">{esc(project['source_label'])}</p>
+      </section>
+    """
     if project.get("cover_kind") == "brand":
         badges = "".join(f"<span>{esc(item)}</span>" for item in project.get("badges", []))
         flow = "".join(
@@ -1504,7 +2434,7 @@ def render_case_metrics(project: dict) -> str:
         for item in stats
     )
     return f"""
-      <section class="case-metrics" aria-label="项目指标">
+      <section class="case-metrics" id="case-metrics" aria-label="项目指标">
 {rows}
       </section>
     """
@@ -1524,13 +2454,40 @@ def render_case_gallery(project: dict) -> str:
         for item in gallery
     )
     return f"""
-      <section class="case-demo" aria-label="产品演示">
+      <section class="case-demo" id="case-demo" aria-label="产品演示">
         <div class="case-demo-head">
           <span>{esc(project.get('gallery_title', 'Demo'))}</span>
           <p>{esc(project.get('gallery_intro', ''))}</p>
         </div>
         <div class="case-gallery">
 {figures}
+        </div>
+      </section>
+    """
+
+
+def render_case_contributions(project: dict) -> str:
+    contributions = project.get("contributions") or []
+    if not contributions:
+        return ""
+    cards = "".join(
+        f"""
+          <article>
+            <span>{esc(item['label'])}</span>
+            <h3>{esc(item['title'])}</h3>
+            <p>{esc(item['body'])}</p>
+          </article>
+        """
+        for item in contributions
+    )
+    return f"""
+      <section class="case-contributions" id="case-contributions" aria-label="我的贡献">
+        <div class="case-demo-head">
+          <span>我做了什么</span>
+          <p>不把它写成流水账，只留下能说明前端、产品表达和 Demo 整理能力的部分。</p>
+        </div>
+        <div class="case-contribution-grid">
+{cards}
         </div>
       </section>
     """
@@ -1575,7 +2532,8 @@ def render_project_page(project: dict, next_project: dict) -> str:
       </section>
 {render_case_metrics(project)}
 {render_case_gallery(project)}
-      <section class="case-story" aria-label="案例详情">
+{render_case_contributions(project)}
+      <section class="case-story" id="case-story" aria-label="案例详情">
 {sections}
       </section>
       <div class="chip-row">{chips}</div>
@@ -1587,7 +2545,13 @@ def render_project_page(project: dict, next_project: dict) -> str:
       </nav>
     </main>
     """
-    return html_page(f"Dongchen Hao | {project['title']}", project["summary"], body, script=False)
+    return html_page(
+        f"Dongchen Hao | {project['title']}",
+        project["summary"],
+        body,
+        script=False,
+        body_class=f"project-page project-{project['slug']}",
+    )
 
 
 def render_redirect(target: str) -> str:

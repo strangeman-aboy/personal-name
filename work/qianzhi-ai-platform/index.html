@@ -4,13 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Dongchen Hao | QianMind</title>
-    <meta name="description" content="QianMind 让用户按结果付费，让 Agent 替创作者接任务赚钱。平台负责匹配、托管、证据和结算。" />
+    <meta name="description" content="QianMind 是 AI Agent 服务交易基础设施：用户描述目标，平台托管预算、匹配能力、沉淀证据，最后按结果验收结算。" />
     <meta name="theme-color" content="#f4f5f6" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="preload" href="/fonts/studio-feixen-sans-variable.woff2" as="font" crossorigin type="font/woff2" />
     <link rel="stylesheet" href="/work/work-stable.css" />
   </head>
-  <body>
+  <body class="project-page project-qianzhi-ai-platform">
 
 
     <header class="site-header">
@@ -29,15 +29,21 @@
     <main class="project-shell">
       <a class="back-link" href="/work/">← 返回作品列表</a>
 
-      <section class="case-cover case-cover-brand" aria-label="项目封面">
-        <div class="case-brand-cover">
-          <div class="case-brand-main">
+      <section class="case-cover case-cover-qianmind" aria-label="QianMind 项目封面">
+        <div class="qianmind-hero">
+          <div class="qianmind-hero-copy">
             <div class="case-brand-logo"><img src="/external-assets/qianzhi/logo.png" alt="QianMind logo" /><span>AI Agent 服务平台</span></div>
-            <h2>专业 Agent，按结果交付</h2>
-            <p>描述目标，乾智把任务、权限、证据和结算整理成一条清晰路径。</p>
+            <h2>专业 Agent 按结果交付</h2>
+            <p>把任务、权限、预算、交付证据和结算放进同一条清晰路径。</p>
             <div class="case-brand-badges"><span>按结果付费</span><span>资金先托管</span><span>证据可追溯</span><span>创作者保留能力包</span></div>
+            <div class="qianmind-hero-links"><a href="https://qianmind-official-site.netlify.app" target="_blank" rel="noreferrer">官网</a><a href="https://qianzhi-agent-demo.netlify.app" target="_blank" rel="noreferrer">产品 Demo</a></div>
           </div>
-          <ol class="case-brand-flow">
+          <div class="qianmind-visual" aria-label="QianMind 产品界面展示">
+            <img class="qianmind-shot qianmind-shot-main" src="/external-assets/qianzhi/hero-task-intake.png" alt="QianMind task intake screen" />
+            <img class="qianmind-shot qianmind-shot-left" src="/external-assets/qianzhi/hero-evidence-review.png" alt="QianMind evidence review screen" />
+            <img class="qianmind-shot qianmind-shot-right" src="/external-assets/qianzhi/hero-creator-console.png" alt="QianMind creator console screen" />
+          </div>
+          <ol class="qianmind-flow">
 
               <li>
                 <span>01</span>
@@ -88,16 +94,35 @@
           </div>
         </dl>
         <div class="case-description">
-          <p>QianMind 让用户按结果付费，让 Agent 替创作者接任务赚钱。平台负责匹配、托管、证据和结算。</p>
+          <p>QianMind 是 AI Agent 服务交易基础设施：用户描述目标，平台托管预算、匹配能力、沉淀证据，最后按结果验收结算。</p>
           <div class="project-actions"><a class="pill-link" href="https://qianmind-official-site.netlify.app" target="_blank" rel="noreferrer">官网 ↗</a><a class="pill-link" href="https://qianzhi-agent-demo.netlify.app" target="_blank" rel="noreferrer">产品 Demo ↗</a><a class="pill-link" href="https://github.com/strangeman-aboy/qianzhi-ai-platform" target="_blank" rel="noreferrer">GitHub ↗</a></div>
         </div>
       </section>
 
+      <section class="case-metrics" id="case-metrics" aria-label="项目指标">
 
-      <section class="case-demo" aria-label="产品演示">
+          <div>
+            <strong>01</strong>
+            <span>描述目标</span>
+          </div>
+        
+          <div>
+            <strong>02</strong>
+            <span>匹配 Agent</span>
+          </div>
+        
+          <div>
+            <strong>03</strong>
+            <span>验收结算</span>
+          </div>
+        
+      </section>
+    
+
+      <section class="case-demo" id="case-demo" aria-label="产品演示">
         <div class="case-demo-head">
           <span>产品演示</span>
-          <p>把核心链路拆成三个可看的界面：任务录入、证据复核、创作者控制台。</p>
+          <p>三张图只讲一件事：任务如何被创建、交付如何被复核、能力如何被经营。</p>
         </div>
         <div class="case-gallery">
 
@@ -119,7 +144,36 @@
         </div>
       </section>
     
-      <section class="case-story" aria-label="案例详情">
+
+      <section class="case-contributions" id="case-contributions" aria-label="我的贡献">
+        <div class="case-demo-head">
+          <span>我做了什么</span>
+          <p>不把它写成流水账，只留下能说明前端、产品表达和 Demo 整理能力的部分。</p>
+        </div>
+        <div class="case-contribution-grid">
+
+          <article>
+            <span>Front-end</span>
+            <h3>把交易链路做成可演示界面</h3>
+            <p>梳理任务录入、证据复核、创作者控制台等关键状态，让产品逻辑可以被直接看见。</p>
+          </article>
+        
+          <article>
+            <span>Product</span>
+            <h3>压缩官网与 Demo 的表达</h3>
+            <p>把复杂概念收束成“发现能力、匹配任务、托管交付”的短句与页面结构。</p>
+          </article>
+        
+          <article>
+            <span>Case</span>
+            <h3>整理成可展示的作品案例</h3>
+            <p>保留真实产品截图，用轻量信息栏解释我负责的部分，而不是堆说明文字。</p>
+          </article>
+        
+        </div>
+      </section>
+    
+      <section class="case-story" id="case-story" aria-label="案例详情">
 
           <article class="case-block">
             <h2>做什么</h2>
