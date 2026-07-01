@@ -790,14 +790,25 @@
   }
 
   let applyTimer = 0;
+  let recoveryTimersInstalled = false;
 
-  const scheduleApply = (delay = 120) => {
+  const runApply = () => {
+    window.requestAnimationFrame(apply);
+  };
+
+  const scheduleApply = (delay = 0) => {
     window.clearTimeout(applyTimer);
-    applyTimer = window.setTimeout(apply, delay);
+    applyTimer = window.setTimeout(runApply, delay);
   };
 
   const scheduleRouteApply = () => {
-    [80, 260, 700, 1400].forEach((delay) => window.setTimeout(apply, delay));
+    [500, 1200, 2600].forEach((delay) => window.setTimeout(runApply, delay));
+  };
+
+  const installRecoveryApplies = () => {
+    if (recoveryTimersInstalled) return;
+    recoveryTimersInstalled = true;
+    [4200, 8000, 13000].forEach((delay) => window.setTimeout(runApply, delay));
   };
 
   const installRouteApplyHooks = () => {
@@ -830,7 +841,8 @@
 
   const scheduleInitialApply = () => {
     installRouteApplyHooks();
-    scheduleApply(180);
+    scheduleApply(2200);
+    installRecoveryApplies();
   };
 
   if (document.readyState === "complete") {
@@ -839,7 +851,4 @@
     window.addEventListener("load", scheduleInitialApply, { once: true });
   }
 
-  [600, 1600, 3200, 7000, 12000].forEach((delay) => {
-    window.setTimeout(apply, delay);
-  });
 })();
