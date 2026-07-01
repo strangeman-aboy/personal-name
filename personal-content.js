@@ -204,48 +204,6 @@
     });
   }
 
-  function revealStaticShell() {
-    document.querySelectorAll("main.container > div, header .left-part, header .right-part").forEach((node) => {
-      node.style.opacity = "1";
-      node.style.transform = "none";
-      node.style.removeProperty("display");
-    });
-    document.querySelectorAll("main.container, main.container *").forEach((node) => {
-      const style = node.getAttribute("style") || "";
-      if (/opacity\s*:\s*0/.test(style)) node.style.opacity = "1";
-      if (style.includes("translateY(")) node.style.transform = "none";
-      if (/pointer-events\s*:\s*none/.test(style)) node.style.pointerEvents = "auto";
-    });
-  }
-
-  let staticMenuInstalled = false;
-
-  function installStaticMenu() {
-    if (staticMenuInstalled) return;
-    const button = document.querySelector(".hamburger-btn");
-    const menu = document.querySelector(".menu");
-    if (!button || !menu) return;
-
-    staticMenuInstalled = true;
-    const setOpen = (open) => {
-      menu.classList.toggle("personal-menu-open", open);
-      document.body.classList.toggle("personal-menu-active", open);
-      button.setAttribute("aria-expanded", String(open));
-      button.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-    };
-
-    button.addEventListener("click", (event) => {
-      event.preventDefault();
-      setOpen(!menu.classList.contains("personal-menu-open"));
-    });
-    menu.querySelectorAll("a").forEach((anchor) => {
-      anchor.addEventListener("click", () => setOpen(false));
-    });
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") setOpen(false);
-    });
-  }
-
   function localizeNonHomeNavigation() {
     if (document.querySelector(".home")) return;
 
@@ -789,8 +747,6 @@
 
   function apply() {
     document.body.classList.add("personalized");
-    revealStaticShell();
-    installStaticMenu();
     installStableWorkNavigation();
     replacePersonalLogo();
     normalizeHeader();
@@ -834,25 +790,14 @@
   }
 
   let applyTimer = 0;
-  let recoveryTimersInstalled = false;
 
-  const runApply = () => {
-    window.requestAnimationFrame(apply);
-  };
-
-  const scheduleApply = (delay = 0) => {
+  const scheduleApply = (delay = 120) => {
     window.clearTimeout(applyTimer);
-    applyTimer = window.setTimeout(runApply, delay);
+    applyTimer = window.setTimeout(apply, delay);
   };
 
   const scheduleRouteApply = () => {
-    [120, 400, 1000].forEach((delay) => window.setTimeout(runApply, delay));
-  };
-
-  const installRecoveryApplies = () => {
-    if (recoveryTimersInstalled) return;
-    recoveryTimersInstalled = true;
-    [1200, 4200, 9000].forEach((delay) => window.setTimeout(runApply, delay));
+    [80, 260, 700, 1400].forEach((delay) => window.setTimeout(apply, delay));
   };
 
   const installRouteApplyHooks = () => {
@@ -885,8 +830,7 @@
 
   const scheduleInitialApply = () => {
     installRouteApplyHooks();
-    scheduleApply(80);
-    installRecoveryApplies();
+    scheduleApply(180);
   };
 
   if (document.readyState === "complete") {
@@ -895,4 +839,7 @@
     window.addEventListener("load", scheduleInitialApply, { once: true });
   }
 
+  [600, 1600, 3200, 7000, 12000].forEach((delay) => {
+    window.setTimeout(apply, delay);
+  });
 })();
