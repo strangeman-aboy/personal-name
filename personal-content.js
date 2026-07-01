@@ -9,13 +9,15 @@
       title: "上海淑德公益基金会官网",
       label: "Education charity",
       href: "http://www.shshude.com/",
-      image: "/external-assets/experience/shude-official-site.png"
+      logo: "/external-assets/experience/shude-logo.png",
+      note: "公益组织、儿童成长与高校志愿者协作。"
     },
     {
       title: "建发致新官网",
       label: "Healthcare supply chain",
       href: "https://www.innostic.com/",
-      image: "/external-assets/experience/innostic-official-site.png"
+      logo: "/external-assets/experience/innostic-logo-current.png",
+      note: "医疗供应链、SPD 场景与 B 端合规流程。"
     }
   ];
 
@@ -490,7 +492,7 @@
     setText(".about .page-title", "关于我");
     setText(
       ".presentation-text",
-      "你好，我是郝东晨，上海理工大学生物医学工程本科在读。我更喜欢把自己放在真实问题里做前端和 AI 原型：从移动端交互、后端接口、Agent 调用链路，到部署骨架和验证脚本。我关注教育、公益、医疗供应链和真实业务自动化，希望把问题先做成可交互、可演示、可继续迭代的产品形态。"
+      "你好，我是郝东晨，上海理工大学康复工程方向在读。我更喜欢把自己放在真实问题里做前端和 AI 原型：从移动端交互、后端接口、Agent 调用链路，到部署骨架和验证脚本。我关注教育、公益、医疗供应链和真实业务自动化，希望把问题先做成可交互、可演示、可继续迭代的产品形态。"
     );
     const resume = document.querySelector(".resume-link a");
     setAnchor(resume, github, "↗ GitHub");
@@ -512,17 +514,20 @@
           .map(
             (source) => `
               <a class="personal-source-card" href="${source.href}" target="_blank" rel="noreferrer">
-                <img src="${source.image}" alt="${source.title} screenshot" loading="lazy" />
+                <div class="personal-source-logo">
+                  <img src="${source.logo}" alt="${source.title} logo" loading="lazy" />
+                </div>
                 <span>${source.label}</span>
                 <strong>${source.title}</strong>
+                <p>${source.note}</p>
               </a>
             `
           )
           .join("")}
         <div class="personal-source-card personal-source-note">
-          <span>Owned business</span>
-          <strong>自营电商素材待补</strong>
-          <p>这一段先不放外部图片，后续更适合用你自己的店铺截图、自动回复后台或订单数据截图。</p>
+          <span>Business automation</span>
+          <strong>自营电商 / 客服自动化</strong>
+          <p>用真实店铺里的重复咨询、订单反馈和客服成本，验证自动回复工具是否真的能解决问题。</p>
         </div>
       </div>
       <div class="personal-experience-list">
@@ -547,7 +552,11 @@
           .join("")}
       </div>
       <div class="personal-life-note">
-        <p>后面这里还可以继续扩展成“灵智空间”的生活入口：朋友、日常照片、公益活动、折腾过的小工具、喜欢的音乐和一些不那么正式但很像你的片段。</p>
+        <a class="personal-life-link" href="/lingzhi-space.html">
+          <span>Life Map</span>
+          <strong>进入灵志空间</strong>
+          <p>朋友、日常照片、公益活动、折腾过的小工具、喜欢的音乐，以及一些不那么正式但更接近生活本身的片段。</p>
+        </a>
       </div>
     `;
     aboutLeft.appendChild(section);

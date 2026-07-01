@@ -55,7 +55,7 @@
     shell.dataset.state = "selected";
     bubbles.forEach((item) => item.classList.toggle("is-selected", item === bubble));
     promptKicker.textContent = space;
-    promptTitle.textContent = "进入我的灵质空间";
+    promptTitle.textContent = "进入我的灵志空间";
     promptNote.textContent = "再点一次入口";
     sprite.src = reactionFrames[Math.floor(Math.random() * reactionFrames.length)];
   }
