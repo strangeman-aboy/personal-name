@@ -2,6 +2,34 @@ body.personalized .language-switch {
   display: none !important;
 }
 
+body.personalized .splashscreen {
+  display: none !important;
+}
+
+body.personalized header {
+  z-index: 20;
+}
+
+body.personalized main.container > div,
+body.personalized header .left-part,
+body.personalized header .right-part {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+body.personalized header .right-part {
+  display: block !important;
+}
+
+body.personalized .menu.personal-menu-open {
+  display: block !important;
+  opacity: 1 !important;
+}
+
+body.personalized.personal-menu-active {
+  overflow: hidden;
+}
+
 svg[data-name="deconstructedLogo"],
 header .logo svg[data-name="logoItem"] {
   display: none !important;
@@ -77,6 +105,16 @@ body.personal-home .personal-home-shape-layer {
   transition: opacity 180ms ease, visibility 0s linear 180ms;
   visibility: hidden;
   width: 924px;
+}
+
+body.personal-home:not(.personal-shapes-fullname):not(.personal-shapes-nickname) .personal-home-shape-layer-fullname {
+  opacity: 1;
+  transition-delay: 0s;
+  visibility: visible;
+}
+
+body.personal-home:not(.personal-shapes-fullname):not(.personal-shapes-nickname) .personal-home-shape-layer-fullname .personal-home-shape {
+  opacity: 0.55;
 }
 
 body.personal-home.personal-shapes-fullname .personal-home-shape-layer-fullname,
